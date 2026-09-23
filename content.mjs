@@ -84,12 +84,12 @@ export const REFERENCES = [
 ];
 
 // 4 boxy pod výpisem nemovitostí
+// ikony: ručně kreslená SVG, mřížka 64×64, shodná linka 3, barvy šablony
 export const BENEFITS_BOXES = [
-  ['Zázemí advokátní praxe', 'Kancelář vznikla z advokátní praxe – obchod stavíme na právu a znalosti místního trhu.'],
-  ['Exekuce, insolvence, SJM', 'Umíme pracovat s exekucemi, poradíme s insolvencí i s vypořádáním společného jmění manželů.'],
-  ['Odhad a PENB', 'Zajistíme průkaz energetické náročnosti budovy i ocenění tržní ceny v místě a čase obvyklé.'],
-  // šablona tu má jen placeholder – ikona vygenerovaná v Magnificu ve stylu ostatních tří
-  ['Výkup a oddlužení', 'Zajistíme i přímý okamžitý výkup nemovitosti a oddlužení.', 'img/ikony/vykup-oddluzeni.png'],
+  ['Zázemí advokátní praxe', 'Kancelář vznikla z advokátní praxe – obchod stavíme na právu a znalosti místního trhu.', 'img/ikony/vyhoda-advokatni-praxe.svg'],
+  ['Exekuce, insolvence, SJM', 'Umíme pracovat s exekucemi, poradíme s insolvencí i s vypořádáním společného jmění manželů.', 'img/ikony/vyhoda-exekuce-sjm.svg'],
+  ['Odhad a PENB', 'Zajistíme průkaz energetické náročnosti budovy i ocenění tržní ceny v místě a čase obvyklé.', 'img/ikony/vyhoda-odhad-penb.svg'],
+  ['Výkup a oddlužení', 'Zajistíme i přímý okamžitý výkup nemovitosti a oddlužení.', 'img/ikony/vyhoda-vykup-oddluzeni.svg'],
 ];
 
 export const ESTIMATE = {
