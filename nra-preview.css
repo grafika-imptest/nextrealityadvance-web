@@ -1,0 +1,65 @@
+/* Doplňky náhledu – jen samostatný banner Chocenic; zbytek je čistá šablona NEXT. */
+.nra-logo { width: auto; height: 100%; max-height: 64px; object-fit: contain; }
+
+.nra-banner { padding: 42px 0; }
+.nra-banner__box {
+  position: relative; display: grid; grid-template-columns: 1.15fr 1fr;
+  border-radius: 8.4px; overflow: hidden; background: #154284; color: #fff;
+  text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.nra-banner__box:hover { text-decoration: none; color: #fff; }
+.nra-banner__img { display: block; min-height: 380px; }
+.nra-banner__img { position: relative; overflow: hidden; }
+.nra-banner__img video, .nra-banner__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s ease; }
+.nra-banner__box:hover .nra-banner__img video { transform: scale(1.03); }
+.nra-banner__content { padding: clamp(24px, 4vw, 56px); display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.nra-banner__content .subtitle { margin: 0; color: #85b929; }
+.nra-banner__content h2 { margin: 0; color: #fff; }
+.nra-banner__lead { margin: 0; color: rgba(255,255,255,.85); max-width: 46ch; }
+.nra-banner__facts { list-style: none; margin: 6px 0 8px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; }
+.nra-banner__facts li { border-left: 2px solid #85b929; padding-left: 12px; }
+.nra-banner__facts strong { display: block; font-size: 1.35em; line-height: 1.2; }
+.nra-banner__facts span { font-size: .85em; color: rgba(255,255,255,.75); }
+.nra-banner__content .button { align-self: flex-start; }
+.nra-banner__badge {
+  position: absolute; top: 16px; left: 16px; background: #85b929; color: #fff;
+  border-radius: 4.2px; padding: 4px 14px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em;
+}
+
+@media (max-width: 800px) {
+  .nra-banner__box { grid-template-columns: 1fr; }
+  .nra-banner__img { min-height: 220px; aspect-ratio: 3 / 2; }
+}
+
+.nra-note {
+  position: fixed; left: 12px; bottom: 12px; z-index: 2000; max-width: min(460px, calc(100vw - 24px));
+  background: #3c3c3b; color: #fff; font-size: 12px; line-height: 1.4; padding: 8px 12px; border-radius: 6px; opacity: .92;
+}
+
+/* fotky týmu ze starého webu mají různé poměry stran -> ořez na formát šablony 340×440 */
+.nra-portrait { width: 100%; aspect-ratio: 340 / 440; object-fit: cover; object-position: center 20%; display: block; }
+.colleagueBox .picture img { aspect-ratio: 340 / 380; object-fit: cover; object-position: center 20%; }
+
+.nra-map { display: block; width: 100%; height: 100%; min-height: 360px; border: 0; }
+.nra-figure { margin: 24px 0; }
+.nra-figure img { width: 100%; border-radius: 8.4px; display: block; }
+.nra-plan img { width: 100%; max-height: 560px; object-fit: cover; border-radius: 8.4px; display: block; }
+
+/* obsah, který je zatím ze šablony – vidět jen v náhledu */
+.nra-tpl-note {
+  display: inline-block; margin: 8px 0; padding: 4px 10px; border-radius: 4px;
+  background: #ececec; color: #555; font-size: 12px; line-height: 1.4; font-style: italic;
+}
+.section-title + .nra-tpl-note { display: table; margin: -8px auto 16px; }
+.nra-note { cursor: pointer; }
+.entityBox h3.nra-long { font-size: .78em; line-height: 1.2; }
+@media (prefers-reduced-motion: reduce) { .nra-banner__img video { display: none; } .nra-banner__img { background: url(img/video/poster-landscape.webp) center/cover; } }
+
+/* slidy úvodního carouselu s vlastním médiem (video / fotka) */
+.slideshow .slide .nra-media { position: relative; width: 100%; height: 100%; }
+.slideshow .slide .nra-media img, .slideshow .slide .nra-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.slideshow .slide.nra-shade .nra-media::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(10, 25, 45, .72) 0%, rgba(10, 25, 45, .45) 40%, rgba(10, 25, 45, 0) 75%);
+}
+@media (prefers-reduced-motion: reduce) { .slideshow .slide .nra-media video { display: none; } .slideshow .slide.nra-shade .nra-media { background: url(img/video/poster-landscape.webp) center/cover; } }
