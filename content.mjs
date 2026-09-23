@@ -20,22 +20,22 @@ export const OFFICE = {
   gdpr: 'https://www.nextreality.cz/gdpr',
 };
 
-// pořadí jako na starém webu; asistentky vynechané (fillout: další kontakty na zaměstnance – Ne)
+// fotky: vymaskované (Magnific) na zelené #85B929 z webu; pořadí jako na starém webu; asistentky vynechané (fillout: další kontakty na zaměstnance – Ne)
 export const TEAM = [
-  { slug: 'radim-lisenko', name: 'Mgr. Radim Lisenko, LL.M., MBA', role: 'Ředitel kanceláře', email: 'radim.lisenko@nextreality.cz', phone: '+420 608 20 20 28', photo: 'radim-lisenko.jpg' },
-  { slug: 'sona-bruckerova', name: 'Soňa Bruckerová', role: 'Realitní makléř', email: 'sona.bruckerova@nextreality.cz', phone: '+420 720 319 631', photo: 'sona-bruckerova.jpg', broker: true },
-  { slug: 'veronika-halova', name: 'Veronika Hálová', role: 'Realitní makléř', email: 'veronika.halova@nextreality.cz', phone: '+420 704 737 399', photo: 'veronika-halova.jpg', broker: true },
-  { slug: 'petra-borovanska', name: 'Ing. Petra Borovanská', role: 'Realitní makléř', email: 'petra.borovanska@nextreality.cz', phone: '+420 603 203 051', photo: 'petra-borovanska.jpg', broker: true },
-  { slug: 'antonin-srb', name: 'Antonín Srb', role: 'Realitní makléř', email: 'antonin.srb@nextreality.cz', phone: '+420 775 921 234', photo: 'antonin-srb.jpg', broker: true },
-  { slug: 'jindrich-krisl', name: 'Jindřich Krisl', role: 'Realitní makléř', email: 'jindrich.krisl@nextreality.cz', phone: '+420 777 559 771', photo: 'jindrich-krisl.webp', broker: true },
+  { slug: 'radim-lisenko', name: 'Mgr. Radim Lisenko, LL.M., MBA', role: 'Ředitel kanceláře', email: 'radim.lisenko@nextreality.cz', phone: '+420 608 20 20 28', photo: 'radim-lisenko-green.jpg' },
+  { slug: 'sona-bruckerova', name: 'Soňa Bruckerová', role: 'Realitní makléř', email: 'sona.bruckerova@nextreality.cz', phone: '+420 720 319 631', photo: 'sona-bruckerova-green.jpg', broker: true },
+  { slug: 'veronika-halova', name: 'Veronika Hálová', role: 'Realitní makléř', email: 'veronika.halova@nextreality.cz', phone: '+420 704 737 399', photo: 'veronika-halova-green.jpg', broker: true },
+  { slug: 'petra-borovanska', name: 'Ing. Petra Borovanská', role: 'Realitní makléř', email: 'petra.borovanska@nextreality.cz', phone: '+420 603 203 051', photo: 'petra-borovanska-green.jpg', broker: true },
+  { slug: 'antonin-srb', name: 'Antonín Srb', role: 'Realitní makléř', email: 'antonin.srb@nextreality.cz', phone: '+420 775 921 234', photo: 'antonin-srb-green.jpg', broker: true },
+  { slug: 'jindrich-krisl', name: 'Jindřich Krisl', role: 'Realitní makléř', email: 'jindrich.krisl@nextreality.cz', phone: '+420 777 559 771', photo: 'jindrich-krisl-green.jpg', broker: true },
 ];
 
 // fillout: prodej celkem 180, pronájem celkem 62; zbylé dva údaje z filloutu (5+ let) a z nextreality.cz (5 makléřů)
 export const STATS = [
-  { value: 180, suffix: '', label: 'Prodaných nemovitostí', note: 'Celkový počet nemovitostí, které jsme prodali.', icon: 'stat-prodej.png' },
-  { value: 62, suffix: '', label: 'Pronajatých nemovitostí', note: 'Celkový počet nemovitostí, které jsme pronajali.', icon: 'stat-pronajem.png' },
-  { value: 5, suffix: '+', label: 'Let na realitním trhu', note: 'Více než pět let zkušeností s prodejem a pronájmem v Plzni a okolí.', icon: 'stat-zkusenosti.png' },
-  { value: 5, suffix: '', label: 'Realitních makléřů', note: 'Tým profesionálů, který se postará o vaši nemovitost.', icon: 'stat-makleri.png' },
+  { value: 180, suffix: '', label: 'Prodaných nemovitostí', note: 'Celkový počet nemovitostí, které jsme prodali.', icon: 'stat-prodej.svg' },
+  { value: 62, suffix: '', label: 'Pronajatých nemovitostí', note: 'Celkový počet nemovitostí, které jsme pronajali.', icon: 'stat-pronajem.svg' },
+  { value: 5, suffix: '+', label: 'Let na realitním trhu', note: 'Více než pět let zkušeností s prodejem a pronájmem v Plzni a okolí.', icon: 'stat-zkusenosti.svg' },
+  { value: 5, suffix: '', label: 'Realitních makléřů', note: 'Tým profesionálů, který se postará o vaši nemovitost.', icon: 'stat-makleri.svg' },
 ];
 
 export const ABOUT = {
