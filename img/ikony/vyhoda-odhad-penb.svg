@@ -1,6 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="#2E7D9E" d="M5 28 28 8l23 20M9.5 24.3V55H36"/>
-  <path stroke="#85B929" d="M17 32h7M17 39h12M17 46h17"/>
-  <circle stroke="#2E7D9E" cx="46" cy="44" r="9"/>
-  <path stroke="#2E7D9E" d="m52.5 50.5 6 6"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 64 64">
+  <!-- Generator: Adobe Illustrator 30.8.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #85b929;
+      }
+
+      .st0, .st1 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+
+      .st1 {
+        stroke: #2e7d9e;
+      }
+    </style>
+  </defs>
+  <path class="st1" d="M5,28L28,8l23,20M9.5,24.3v30.7h26.5"/>
+  <path class="st0" d="M17,32h18.9M17,39h15.3M17,46h15.2"/>
+  <circle class="st1" cx="46" cy="44" r="9"/>
+  <path class="st1" d="M52.5,50.5l6,6"/>
 </svg>
