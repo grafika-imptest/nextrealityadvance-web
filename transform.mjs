@@ -1,6 +1,6 @@
 // Úpravy HTML šablony NEXT obsahem pobočky. Běží v buildu nad každou stránkou.
 import * as cheerio from 'cheerio';
-import { OFFICE, TEAM, STATS, ABOUT, BENEFITS_LIST, BENEFITS_BOXES, ESTIMATE, DIVORCE, CHOCENICE } from './content.mjs';
+import { OFFICE, TEAM, STATS, ABOUT, BENEFITS_LIST, BENEFITS_BOXES, ESTIMATE, CHOCENICE, HOME_CONTACT, REFERENCES } from './content.mjs';
 
 const PROJECT_URL = 'chocenice.html';
 const IMG = 'img/';
@@ -68,11 +68,12 @@ function common($) {
     `<li><a href="${OFFICE.whistleblowing}" target="_blank" rel="noopener">Vnitřní oznamovací systém</a></li>` +
     `<li><a href="kontakty.html">Kontakt</a></li>`);
   end.find('p').first().html(
-    `${esc(OFFICE.company)} · IČ: ${OFFICE.ico} · DIČ: ${OFFICE.dic} · ${esc(OFFICE.registry)}<br>` +
+    `${esc(OFFICE.company)} · sídlo ${esc(OFFICE.seat)} · IČ: ${OFFICE.ico} · ${esc(OFFICE.registry)}<br>` +
     `Copyright © 2026 ${OFFICE.brand} | by ` + end.find('p a').first().toString());
 
   // demo obsah šablony, pro který pobočka nemá podklady
-  $('section.newsList, section.blogSlider, section.referenceExtract').remove();
+  $('section.newsList, section.blogSlider').remove();
+  references($);
   $('#snippet-popup-, #snippet-regulatoryNotice-').empty();
 
   // výpis nemovitostí je v produkci napojený na NextApp
@@ -81,6 +82,21 @@ function common($) {
   $('section.productSwich h2').first().text('Nejnovější nemovitosti z naší nabídky');
 
   benefitsBoxes($);
+}
+
+function references($) {
+  const s = $('section.referenceExtract');
+  if (!s.length) return;
+  s.find('h2').text('Naše reference');
+  s.find('.subtitle').text('Co o nás říkají klienti');
+  s.find('a.button').attr('href', OFFICE.listings).attr('target', '_blank').attr('rel', 'noopener');
+  const items = s.find('.referenceBox').closest('li');
+  items.each((i, li) => {
+    const r = REFERENCES[i % REFERENCES.length];
+    $(li).find('.text').html('<p>' + esc(r[0]) + '</p>');
+    $(li).find('h3').text(r[1]);
+  });
+  s.find('.referenceBox').first().closest('ul').before(tplNote('Reference z profilu pobočky na nextreality.cz – v CMS se načítají automaticky.'));
 }
 
 function mapEmbed() {
@@ -164,7 +180,12 @@ const pages = {
       $(box).find('h3').text(d.value + d.suffix);
       $(box).find('.subtitle').text(d.label);
       $(box).find('p').not('.subtitle').text(d.note);
-      $(box).find('img').attr('alt', d.label);
+      setImg($, $(box).find('img'), IMG + 'ikony/' + d.icon, d.label);
+    });
+    // kontaktní osoba u formuláře na úvodní stránce (fillout)
+    $('.contacts-wrapper').each((_, w) => {
+      $(w).find('a[href^="tel:"]').attr('href', tel(HOME_CONTACT.phone)).find('span').last().text(HOME_CONTACT.phone);
+      $(w).find('a[href^="mailto:"]').attr('href', 'mailto:' + HOME_CONTACT.email).find('span').last().text(HOME_CONTACT.email);
     });
 
     // makléři
@@ -189,19 +210,12 @@ const pages = {
     ps.find('[data-uk-slider-item="previous"], [data-uk-slider-item="next"]').css('visibility', 'hidden');
     $('section.verticalSlider').remove();
 
-    // služby – texty ze starého webu tam, kde existují
-    const svc = $('section.serviceSlider');
-    svc.find('.section-title .subtitle').text('Naše služby');
-    svc.find('.section-title h2').text('Realitní, právní a finanční služby pod jednou střechou');
-    const law = svc.find('.serviceBox').filter((_, s) => $(s).find('h3').text().includes('Právnické'));
-    law.find('h3').text('Právní služby a rozvod');
-    law.find('.text').html(`<p>${esc(DIVORCE.lead)}</p><ul><li>vypořádání společného jmění manželů</li><li>exekuce a insolvence</li><li>oprávnění provádět veřejné dražby</li></ul>`);
-    law.find('.button-wrapper a').attr('href', 'rozvod-vyporadani-sjm.html').text('Rozvod a vypořádání SJM');
-    svc.find('.serviceBox').not(law).find('.content .wrapper').append(tplNote('Text ze šablony – starý web k této službě text nemá.'));
+    // fillout: stránka „Služby" – Ne, takže slider služeb (odkazuje na stránky služeb) vypouštíme
+    $('section.serviceSlider').remove();
   },
 
   about($) {
-    pageTop($, 'O nás', `<p>${esc(ABOUT.lead)}</p>`, IMG + 'kancelar/kancelar-1.jpg');
+    pageTop($, 'O nás', `<p>${esc(ABOUT.summary)}</p>`, IMG + 'kancelar/kancelar-1.jpg');
     counters($, $('section.menuSection').first());
     $('section.menuSection').eq(1).remove(); // časová osa – pobočka podklady nemá
     $('section.singleContent .text').html(
@@ -219,7 +233,7 @@ const pages = {
     const lead = TEAM.filter(t => !t.broker);
     const brokers = TEAM.filter(t => t.broker);
     secs.eq(0).find('[data-uk-grid]').first().html(lead.map(col).join(''));
-    secs.eq(0).find('.container').prepend('<div class="section-title"><p class="subtitle center">Vedení a asistence</p><h2 class="center">Vedení kanceláře</h2></div>');
+    secs.eq(0).find('.container').prepend('<div class="section-title"><p class="subtitle center">Vedení</p><h2 class="center">Vedení kanceláře</h2></div>');
     secs.eq(1).find('.section-title').html('<p class="subtitle center">Plzeň</p><h2 class="center">Naši realitní makléři</h2>');
     secs.eq(1).find('[data-uk-grid]').last().html(brokers.map(col).join(''));
     secs.eq(2).remove();
@@ -235,7 +249,7 @@ const pages = {
       `<p><span>${esc(OFFICE.company)}</span><br><span>${esc(OFFICE.street)}</span><br><span>${esc(OFFICE.city)}</span></p>` +
       `<p>${esc(OFFICE.hours)}<br><a href="${tel(OFFICE.phone)}">${OFFICE.phone}</a><br><a href="mailto:${OFFICE.email}">${OFFICE.email}</a></p>` +
       `<p><strong>Parkování</strong> se nachází přímo u naší pobočky.</p>` +
-      `<p>IČ: ${OFFICE.ico}<br>DIČ: ${OFFICE.dic}</p><p>${esc(OFFICE.registry)}</p>`);
+      `<p>Sídlo: ${esc(OFFICE.seat)}<br>IČ: ${OFFICE.ico}</p><p>${esc(OFFICE.registry)}</p>`);
     top.find('.map-wrapper').html(mapEmbed());
     const secs = $('section.entityContact');
     secs.eq(0).find('.section-title').html('<p class="subtitle center">Plzeň</p><h2 class="center">Chcete kontaktovat někoho konkrétního?</h2>');
@@ -254,17 +268,6 @@ const pages = {
       $(b).find('h3').text(d[0]);
       $(b).find('p').first().text(d[1]);
     });
-  },
-
-  divorce($) {
-    pageTop($, DIVORCE.title, `<p>${esc(DIVORCE.lead)}</p>`);
-    $('section.sidePhoto').each((i, s) => {
-      const d = DIVORCE.blocks[i];
-      if (!d) return;
-      $(s).find('.text h2').text(d[0]);
-      $(s).find('.text .content').html(paras(d[1]));
-    });
-    $('section.sidePhoto').first().find('.picture').append(tplNote('Fotka ze šablony – starý web měl jen ilustrační obrázek.'));
   },
 
   project($) {

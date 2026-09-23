@@ -16,7 +16,6 @@ const PAGES = [
   { out: 'makleri.html', tpl: '/makleri', page: 'team', title: 'Náš tým' },
   { out: 'kontakty.html', tpl: '/kontakty', page: 'contact', title: 'Kontakt' },
   { out: 'odhad-ceny-nemovitosti.html', tpl: '/odhad-ceny-nemovitosti', page: 'estimate', title: 'Odhad nemovitosti zdarma' },
-  { out: 'rozvod-vyporadani-sjm.html', tpl: '/pravnicke-sluzby', page: 'divorce', title: 'Rozvod a vypořádání SJM' },
   { out: 'chocenice.html', tpl: '/rezidence-vyskov', page: 'project', title: 'Stavební pozemky Chocenice' },
 ];
 
@@ -28,7 +27,6 @@ const LINKS = {
   '/kontakty': 'kontakty.html',
   '/kancelare': 'kontakty.html',
   '/odhad-ceny-nemovitosti': 'odhad-ceny-nemovitosti.html',
-  '/pravnicke-sluzby': 'rozvod-vyporadani-sjm.html',
   '/developerske-projekty': 'chocenice.html',
   '/developerske-projekty-1': 'chocenice.html',
   '/rezidence-vyskov': 'chocenice.html',
