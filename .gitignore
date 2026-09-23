@@ -1,0 +1,4 @@
+node_modules/
+# stažený starý web – jen vstupní podklad
+old/
+*.log
